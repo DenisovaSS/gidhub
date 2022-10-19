@@ -1,0 +1,50 @@
+body {
+  padding-left: 10px;
+  background: #acdcee;
+}
+.visible_day {
+  text-align: center;
+  padding-top: 20px;
+}
+h2 {
+  font-size: 70px;
+  padding-top: 20px;
+}
+.city_temp {
+  font-size: 60px;
+  text-align: center;
+}
+.research {
+  border: 1px solid grey;
+  background: #d8d7d7;
+  border-radius: 10px;
+}
+.cloud {
+  font-size: 150px;
+  color: blue;
+  display: block;
+  text-align: center;
+}
+.emoji {
+  color: rgb(46, 128, 250);
+  font-size: 34px;
+  text-align: right;
+  padding: 70px;
+}
+.units {
+  position: relative;
+  top: -34px;
+  font-size: 22px;
+}
+button {
+  margin: 0 10px 10px 10px;
+}
+.form-label {
+  padding-left: 10px;
+  font-size: 20px;
+
+  font-family: "Dancing Script", cursive;
+}
+.container_sint {
+  font-family: "Dancing Script", cursive;
+}
