@@ -61,21 +61,6 @@ let monthAll = [
 let months = monthAll[month];
 let today = document.querySelector(".data-today");
 today.innerHTML = `${date} ${months}`;
-//change digree
-function temperatureCelsius(event) {
-  event.preventDefault();
-  let tempCelsi = document.querySelector(".city_temp");
-  tempCelsi.innerHTML = 21;
-}
-let celsi = document.querySelector(".celsius");
-celsi.addEventListener("click", temperatureCelsius);
-function temperatureFahrenheit(event) {
-  event.preventDefault();
-  let tempfahren = document.querySelector(".city_temp");
-  tempfahren.innerHTML = 66;
-}
-let fahren = document.querySelector(".fahrenheit");
-fahren.addEventListener("click", temperatureFahrenheit);
 
 //position location_week5
 
@@ -83,6 +68,8 @@ function showTemperature(respose) {
   document.querySelector(".city_temp").innerHTML = Math.round(
     respose.data.main.temp
   );
+  let celsiusTemper = respose.data.main.temp;
+
   document.querySelector(".weather_description").innerHTML =
     respose.data.weather[0].main;
   document.querySelector(".min_temperature").innerHTML = Math.round(
@@ -95,6 +82,33 @@ function showTemperature(respose) {
   document.querySelector(".humidity").innerHTML = Math.round(
     respose.data.main.humidity
   );
+  //change digree
+  function temperatureCelsius(event) {
+    event.preventDefault();
+    let tempCelsi = document.querySelector(".city_temp");
+    celsi.classList.add("active");
+    fahren.classList.remove("active");
+    tempCelsi.innerHTML = Math.round(celsiusTemper);
+  }
+  let celsi = document.querySelector("#celsius");
+  celsi.addEventListener("click", temperatureCelsius);
+
+  function temperatureFahrenheit(event) {
+    event.preventDefault();
+    let tempfahren = document.querySelector(".city_temp");
+    celsi.classList.remove("active");
+    fahren.classList.add("active");
+    tempfahren.innerHTML = Math.round((celsiusTemper * 9) / 5 + 32);
+  }
+  let fahren = document.querySelector("#fahrenheit");
+  fahren.addEventListener("click", temperatureFahrenheit);
+  // console.log(          `http://openweathermap.org/img/wn/${respose.data.weather[0].icon}@2x.png`        );
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${respose.data.weather[0].icon}@2x.png`
+    );
 }
 
 function showPosition(position) {
@@ -107,6 +121,9 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
+let celsiusTemper = null;
+
 let yourLocation = document.querySelector(".current");
 yourLocation.addEventListener("click", getCurrentLocation);
+
 cityPosition("Dnipro");

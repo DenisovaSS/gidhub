@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <title>Weather</title>
+    <title>Weather for little princess</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -22,122 +22,138 @@
     <link href="src/style.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <form class="research" id="research-form">
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label"
-                  >Weather in city:</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  placeholder="Enter your city"
-                />
-              </div>
-              <button type="submit" class="btn btn-primary">Change</button>
-              <button type="button" class="btn btn-success current">
-                Current
-              </button>
-            </form>
-            <form class="city_day">
-              <div class="row">
-                <div class="col-sm-6">
-                  <h2></h2>
-                  <p>
-                    <span class="city_temp">25</span>
-                    <span class="units"
-                      ><a class="celsius" href="#">°C</a> |
-                      <a class="fahrenheit" href="#">°F</a></span
-                    >
-                  </p>
-                </div>
-                <div class="col-sm-6 visible_day">
-                  <h4>Tues, 15:02</h4>
-                  <p class="data-today">27 September</p>
-                </div>
-              </div>
-            </form>
-            <i class="fa-solid fa-cloud cloud"></i>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card over">
+            <div class="card-body">
+              <form class="research" id="research-form">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label"
+                    >Weather in city:</label
+                  >
+                  <div class="row">
+                    <div class="col-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        placeholder="Enter your city"
+                      />
+                    </div>
 
-            <br />
-            <br />
-            <br />
+                    <div class="col-6">
+                      <button type="submit" class="btn btn-primary">
+                        Change
+                      </button>
+                      <button type="button" class="btn btn-success current">
+                        Current
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <form class="city_day">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h2></h2>
+                  </div>
+                  <div class="col-sm-6 visible_day">
+                    <h4>Tues, 15:02</h4>
+                    <p class="data-today">27 September</p>
+                  </div>
+                </div>
+                <p class="tempeANDpicture">
+                  <img
+                    src="http://openweathermap.org/img/wn/10d@2x.png"
+                    alt=""
+                    class="cloud"
+                    id="icon"
+                  />
+                  <span class="city_temp">25</span>
+                  <span class="units"
+                    ><a id="celsius" href="#" class="active">°C</a> |
+                    <a id="fahrenheit" href="#">°F</a></span
+                  >
+                </p>
+              </form>
 
-            <div class="container_sint">
-              <div class="weather_description">Cloudy</div>
-              <div>humidity today <span class="humidity">47</span>%</div>
-              <div>
-                <span class="min_temperature"> 10&deg;</span>/
-                <span class="max_temperature"> 25&deg;</span>
+              <img
+                src="image\princess.png"
+                alt="foto princess"
+                class="logo"
+                width="300px"
+              />
+
+              <br />
+              <br />
+
+              <div class="container_sint">
+                <div class="weather_description">Cloudy</div>
+                <div>humidity today <span class="humidity">47</span>%</div>
+                <div>
+                  <span class="min_temperature"> 10&deg;</span>/
+                  <span class="max_temperature"> 25&deg;</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="open-source">
-          <a href="https://github.com/DenisovaSS/gidhub" target="_blank"
-            >Open-source code</a
-          >
-          by Svitlana Denysova
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="card">
-          <div class="card-body">
-            <div class="card mb-3" style="max-width: 18rem">
-              <div class="card-header">
-                Wednesday, <br />
-                28 September
+        <div class="col-sm-4">
+          <div class="card over">
+            <div class="card-body">
+              <div class="card mb-3" style="max-width: 18rem">
+                <div class="card-header">
+                  Wednesday, <br />
+                  28 September
+                </div>
+                <div class="card-body listDay">
+                  <h5 class="card-title">
+                    12&deg/25&deg
+                    <span class="emoji">
+                      <i class="fa-solid fa-cloud-sun"></i
+                    ></span>
+                  </h5>
+                </div>
               </div>
-              <div class="card-body">
-                <h5 class="card-title">
-                  12&deg/25&deg
-                  <span class="emoji">
-                    <i class="fa-solid fa-cloud-sun"></i
-                  ></span>
-                </h5>
+              <div class="card mb-3" style="max-width: 18rem">
+                <div class="card-header">
+                  Thursday, <br />
+                  29 September
+                </div>
+                <div class="card-body listDay">
+                  <h5 class="card-title">
+                    10&deg/22&deg
+                    <span class="emoji"><i class="fa-solid fa-cloud"></i></span>
+                  </h5>
+                </div>
               </div>
-            </div>
-            <div class="card mb-3" style="max-width: 18rem">
-              <div class="card-header">
-                Thursday, <br />
-                29 September
+              <div class="card mb-3" style="max-width: 18rem">
+                <div class="card-header">
+                  Friday, <br />
+                  30 September
+                </div>
+                <div class="card-body listDay">
+                  <h5 class="card-title">
+                    13&deg/23&deg
+                    <span class="emoji"
+                      ><i class="fa-solid fa-cloud-sun"></i
+                    ></span>
+                  </h5>
+                </div>
               </div>
-              <div class="card-body">
-                <h5 class="card-title">
-                  10&deg/22&deg
-                  <span class="emoji"><i class="fa-solid fa-cloud"></i></span>
-                </h5>
-              </div>
-            </div>
-            <div class="card mb-3" style="max-width: 18rem">
-              <div class="card-header">
-                Friday, <br />
-                30 September
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">
-                  13&deg/23&deg
-                  <span class="emoji"
-                    ><i class="fa-solid fa-cloud-sun"></i
-                  ></span>
-                </h5>
-              </div>
-            </div>
 
-            <div class="card mb-3" style="max-width: 18rem">
-              <div class="card-header">
-                Saturday, <br />
-                1 October
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">
-                  12&deg/26&deg
-                  <span class="emoji"><i class="fa-solid fa-sun"></i></span>
-                </h5>
+              <div class="card mb-3" style="max-width: 18rem">
+                <div class="card-header">
+                  Saturday, <br />
+                  1 October
+                </div>
+                <div class="card-body listDay">
+                  <h5 class="card-title">
+                    12&deg/26&deg
+                    <span class="emoji"><i class="fa-solid fa-sun"></i></span>
+                  </h5>
+                </div>
               </div>
             </div>
           </div>

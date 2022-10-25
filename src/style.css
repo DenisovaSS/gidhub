@@ -1,6 +1,18 @@
+.container {
+  margin: 20px;
+}
+.over {
+  height: 100%;
+  background: linear-gradient(
+    106.5deg,
+    rgba(255, 215, 185, 0.91) 23%,
+    rgba(223, 159, 247, 0.8) 93%
+  );
+}
 body {
   padding-left: 10px;
-  background: #acdcee;
+  background-image: url("image/clouds.jpg");
+  background-size: cover;
 }
 .visible_day {
   text-align: center;
@@ -9,24 +21,33 @@ body {
 h2 {
   font-size: 70px;
   padding-top: 20px;
+  color: #57385c;
 }
 .city_temp {
   font-size: 60px;
   text-align: center;
 }
 .research {
-  border: 1px solid grey;
-  background: #d8d7d7;
-  border-radius: 10px;
+  border: 1px solid #57385c;
+  background: #c06c84;
+  background-size: 800px 400px;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  background-size: cover;
+  color: #ffcccc;
 }
-.cloud {
-  font-size: 150px;
-  color: blue;
-  display: block;
-  text-align: center;
+.card-header {
+  background: #c06c84;
+  background-size: cover;
+  font-size: 20px;
+  color: #ffcccc;
 }
+.listDay {
+  background-color: #ffd7d7;
+}
+
 .emoji {
-  color: rgb(46, 128, 250);
+  color: #57385c;
   font-size: 34px;
   text-align: right;
   padding: 70px;
@@ -45,6 +66,24 @@ button {
 
   font-family: "Dancing Script", cursive;
 }
+.form-control {
+  margin-left: 20px;
+}
 .container_sint {
   font-family: "Dancing Script", cursive;
+  position: absolute;
+  bottom: 10px;
+  width: 50%;
+}
+.tempeANDpicture {
+  padding-top: 50px;
+}
+.logo {
+  display: block;
+  margin: 5px auto;
+}
+.tempeANDpicture .active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+  text-decoration: none;
 }
