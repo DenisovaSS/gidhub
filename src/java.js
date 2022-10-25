@@ -127,3 +127,4 @@ let yourLocation = document.querySelector(".current");
 yourLocation.addEventListener("click", getCurrentLocation);
 
 cityPosition("Dnipro");
+//my link: https://magenta-souffle-ab6ac7.netlify.app/
