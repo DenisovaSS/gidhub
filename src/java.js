@@ -62,6 +62,32 @@ let months = monthAll[month];
 let today = document.querySelector(".data-today");
 today.innerHTML = `${date} ${months}`;
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+  //let days = ["Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat"];
+  let forecastHTML = "";
+  let Fdays = ["Sunday", "Monday", "Tuesday", "Wednesday"];
+  Fdays.forEach(function (Fday) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="card mb-3" style="max-width: 18rem">
+                <div class="card-header">
+                  ${Fday}, <br />
+                  28 September
+                </div>
+                <div class="card-body listDay">
+                  <h5 class="card-title">                  
+                   <img src="http://openweathermap.org/img/wn/10d@2x.png"width="60px"alt=""class="forecast_icon"id="forecast_icon"/>  
+                  <span class="emoji">
+                   12&deg/25&deg
+                    </span>
+                  </h5>
+                </div>
+              </div>`;
+  });
+
+  forecastElement.innerHTML = forecastHTML;
+}
 //position location_week5
 
 function showTemperature(respose) {
@@ -125,6 +151,6 @@ let celsiusTemper = null;
 
 let yourLocation = document.querySelector(".current");
 yourLocation.addEventListener("click", getCurrentLocation);
-
+displayForecast();
 cityPosition("Dnipro");
 //my link: https://magenta-souffle-ab6ac7.netlify.app/
