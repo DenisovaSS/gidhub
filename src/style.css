@@ -11,7 +11,7 @@
 }
 body {
   padding-left: 10px;
-  background-image: url("image/clouds.jpg");
+  background: wheat;
   background-size: cover;
 }
 .visible_day {
