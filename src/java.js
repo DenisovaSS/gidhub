@@ -61,30 +61,43 @@ let monthAll = [
 let months = monthAll[month];
 let today = document.querySelector(".data-today");
 today.innerHTML = `${date} ${months}`;
+function ForamtDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thu", "Fri", "Sat"];
+  return days[day];
+}
 
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let Fdays = response.data.daily;
   let forecastElement = document.querySelector("#weather-forecast");
   //let days = ["Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat"];
   let forecastHTML = "";
-  let Fdays = ["Sunday", "Monday", "Tuesday", "Wednesday"];
-  Fdays.forEach(function (Fday) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="card mb-3" style="max-width: 18rem">
+  // let Fdays = ["Sunday", "Monday", "Tuesday", "Wednesday"];
+  Fdays.forEach(function (Fday, index) {
+    if (index < 5 && index > 0) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="card mb-3" style="max-width: 18rem">
                 <div class="card-header">
-                  ${Fday}, <br />
-                  28 September
+                  ${ForamtDay(Fday.dt)} <br />
+                  28 September                 
                 </div>
+               
                 <div class="card-body listDay">
                   <h5 class="card-title">                  
-                   <img src="http://openweathermap.org/img/wn/10d@2x.png"width="60px"alt=""class="forecast_icon"id="forecast_icon"/>  
+                   <img src="http://openweathermap.org/img/wn/${
+                     Fday.weather[0].icon
+                   }@2x.png"width="60px"alt=""class="forecast_icon"id="forecast_icon"/>  
                   <span class="emoji">
-                   12&deg/25&deg
+                   ${Math.round(Fday.temp.min)}&deg/${Math.round(
+          Fday.temp.max
+        )}&deg
                     </span>
                   </h5>
                 </div>
               </div>`;
+    }
   });
 
   forecastElement.innerHTML = forecastHTML;
