@@ -62,7 +62,8 @@ let months = monthAll[month];
 let today = document.querySelector(".data-today");
 today.innerHTML = `${date} ${months}`;
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#weather-forecast");
   //let days = ["Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat"];
   let forecastHTML = "";
@@ -88,25 +89,33 @@ function displayForecast() {
 
   forecastElement.innerHTML = forecastHTML;
 }
+
+function getForecast(coordinate) {
+  let apiKey = "c95d60a1e3adbeb286133f1ebebc2579";
+  let ipIrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinate.lat}&lon=${coordinate.lon}&appid=${apiKey}&units=metric`;
+
+  axios.get(ipIrl).then(displayForecast);
+}
+
 //position location_week5
 
-function showTemperature(respose) {
+function showTemperature(response) {
   document.querySelector(".city_temp").innerHTML = Math.round(
-    respose.data.main.temp
+    response.data.main.temp
   );
-  let celsiusTemper = respose.data.main.temp;
+  let celsiusTemper = response.data.main.temp;
 
   document.querySelector(".weather_description").innerHTML =
-    respose.data.weather[0].main;
+    response.data.weather[0].main;
   document.querySelector(".min_temperature").innerHTML = Math.round(
-    respose.data.main.temp_min
+    response.data.main.temp_min
   );
   document.querySelector(".max_temperature").innerHTML = Math.round(
-    respose.data.main.temp_max
+    response.data.main.temp_max
   );
-  document.querySelector("h2").innerHTML = respose.data.name;
+  document.querySelector("h2").innerHTML = response.data.name;
   document.querySelector(".humidity").innerHTML = Math.round(
-    respose.data.main.humidity
+    response.data.main.humidity
   );
   //change digree
   function temperatureCelsius(event) {
@@ -133,8 +142,9 @@ function showTemperature(respose) {
     .querySelector("#icon")
     .setAttribute(
       "src",
-      `http://openweathermap.org/img/wn/${respose.data.weather[0].icon}@2x.png`
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
+  getForecast(response.data.coord);
 }
 
 function showPosition(position) {
@@ -151,6 +161,6 @@ let celsiusTemper = null;
 
 let yourLocation = document.querySelector(".current");
 yourLocation.addEventListener("click", getCurrentLocation);
-displayForecast();
+
 cityPosition("Dnipro");
 //my link: https://magenta-souffle-ab6ac7.netlify.app/
