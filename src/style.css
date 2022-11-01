@@ -1,5 +1,7 @@
 .container {
-  margin: 20px;
+  min-width: fit-content;
+  display: block;
+  margin: 10px auto;
 }
 .over {
   height: 100%;
