@@ -61,19 +61,49 @@ let monthAll = [
 let months = monthAll[month];
 let today = document.querySelector(".data-today");
 today.innerHTML = `${date} ${months}`;
+
+//Change format
 function ForamtDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thu", "Fri", "Sat"];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
   return days[day];
 }
 
+function Foramtmonth(stamp) {
+  let date = new Date(stamp * 1000);
+  let Fdate = date.getDate();
+  let Fmonth = date.getMonth();
+  let monthAll = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  return Fdate + " " + monthAll[Fmonth];
+}
 function displayForecast(response) {
   let Fdays = response.data.daily;
   let forecastElement = document.querySelector("#weather-forecast");
-  //let days = ["Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat"];
   let forecastHTML = "";
-  // let Fdays = ["Sunday", "Monday", "Tuesday", "Wednesday"];
+  // let Fdays = ["Sunday", "Monday", "Tuesday", "Wednesday","Thursday","Friday"];
   Fdays.forEach(function (Fday, index) {
     if (index < 5 && index > 0) {
       forecastHTML =
@@ -81,7 +111,7 @@ function displayForecast(response) {
         `<div class="card mb-3" style="max-width: 18rem">
                 <div class="card-header">
                   ${ForamtDay(Fday.dt)} <br />
-                  28 September                 
+                   ${Foramtmonth(Fday.dt)}             
                 </div>
                
                 <div class="card-body listDay">
