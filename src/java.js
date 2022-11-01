@@ -150,12 +150,12 @@ function showTemperature(response) {
 
   document.querySelector(".weather_description").innerHTML =
     response.data.weather[0].main;
-  document.querySelector(".min_temperature").innerHTML = Math.round(
+  document.querySelector(".min_temperature").innerHTML = `${Math.round(
     response.data.main.temp_min
-  );
-  document.querySelector(".max_temperature").innerHTML = Math.round(
+  )}°`;
+  document.querySelector(".max_temperature").innerHTML = `${Math.round(
     response.data.main.temp_max
-  );
+  )}°`;
   document.querySelector("h2").innerHTML = response.data.name;
   document.querySelector(".humidity").innerHTML = Math.round(
     response.data.main.humidity
