@@ -11,7 +11,7 @@
 }
 body {
   padding-left: 10px;
-  background: wheat;
+  background-image: url("../image/clouds.jpg");
   background-size: cover;
 }
 .visible_day {
@@ -29,7 +29,7 @@ h2 {
 }
 .research {
   border: 1px solid #57385c;
-  background: #c06c84;
+  background-image: url("../image/feel-top.jpg");
   background-size: 800px 400px;
   background-repeat: no-repeat;
   border-radius: 20px;
@@ -37,7 +37,7 @@ h2 {
   color: #ffcccc;
 }
 .card-header {
-  background: #c06c84;
+  background: url("../image/feel2.jpg") no-repeat;
   background-size: cover;
   font-size: 20px;
   color: #ffcccc;
