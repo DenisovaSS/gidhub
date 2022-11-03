@@ -66,15 +66,7 @@ today.innerHTML = `${date} ${months}`;
 function ForamtDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   return days[day];
 }
@@ -83,21 +75,8 @@ function Foramtmonth(stamp) {
   let date = new Date(stamp * 1000);
   let Fdate = date.getDate();
   let Fmonth = date.getMonth();
-  let monthAll = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  return Fdate + " " + monthAll[Fmonth];
+
+  return Fdate + "/" + Fmonth;
 }
 function displayForecast(response) {
   let Fdays = response.data.daily;
@@ -105,28 +84,36 @@ function displayForecast(response) {
   let forecastHTML = "";
   // let Fdays = ["Sunday", "Monday", "Tuesday", "Wednesday","Thursday","Friday"];
   Fdays.forEach(function (Fday, index) {
-    if (index < 5 && index > 0) {
+    if (index < 6 && index > 0) {
       forecastHTML =
         forecastHTML +
-        `<div class="card mb-3" style="max-width: 18rem">
-                <div class="card-header">
+        `<div class="container forecastBody" >
+        <div class="row text-center">
+        <div class="col-3">
+                
                   ${ForamtDay(Fday.dt)} <br />
                    ${Foramtmonth(Fday.dt)}             
                 </div>
-               
-                <div class="card-body listDay">
-                  <h5 class="card-title">                  
-                   <img src="http://openweathermap.org/img/wn/${
-                     Fday.weather[0].icon
-                   }@2x.png"width="60px"alt=""class="forecast_icon"id="forecast_icon"/>  
+                <div class="col-6">
                   <span class="emoji">
                    ${Math.round(Fday.temp.min)}&deg/${Math.round(
           Fday.temp.max
         )}&deg
                     </span>
-                  </h5>
-                </div>
-              </div>`;
+                    </div>
+               
+                <div class="col-3">
+                                 
+                   <img src="http://openweathermap.org/img/wn/${
+                     Fday.weather[0].icon
+                   }@2x.png"width="60px"alt=""class="forecast_icon"id="forecast_icon"/>  
+                   </div>
+
+                 
+                
+              </div>
+              </div>
+               </div>`;
     }
   });
 

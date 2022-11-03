@@ -21,6 +21,7 @@ body {
   padding-top: 20px;
   font-size: 20px;
 }
+
 h2 {
   font-size: 70px;
   padding-top: 20px;
@@ -39,21 +40,18 @@ h2 {
   background-size: cover;
   color: #ffcccc;
 }
-.card-header {
-  background: url("../image/feel2.jpg") no-repeat;
-  background-size: cover;
-  font-size: 20px;
-  color: #ffcccc;
-}
-.listDay {
-  background-color: #ffd7d7;
+.forecastBody {
+  border: 2px solid white;
+  border-radius: 20px;
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .emoji {
   color: #57385c;
-  font-size: 24px;
+  font-size: 34px;
   text-align: center;
-  padding-left: 50px;
 }
 .units {
   position: relative;
@@ -78,10 +76,6 @@ button {
   font-size: 20px;
 }
 
-.logo {
-  display: block;
-  margin: 5px auto;
-}
 .temperature_com .active {
   color: rgb(33, 33, 33);
   cursor: default;
@@ -97,4 +91,14 @@ button {
 .open-source {
   margin: 10px;
   font-size: 10px;
+}
+.SignatureForecast {
+  font-family: "Dancing Script", cursive;
+  color: #57385c;
+  font-size: 20px;
+  margin-bottom: 0;
+  padding: 15px 15px 0 15px;
+}
+#weather-forecast {
+  padding-top: 0;
 }
