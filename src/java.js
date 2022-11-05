@@ -9,9 +9,11 @@ function changeCity(event) {
   cityPosition(fixCity);
 }
 function cityPosition(fixCity) {
-  let apiKey = "c8a77112b2faf6684bb4b21a0aa778ae";
-  let ipIrl = `https://api.openweathermap.org/data/2.5/weather?q=${fixCity}&appid=${apiKey}&units=metric`;
-  axios.get(`${ipIrl}&appid=${apiKey}`).then(showTemperature);
+  let apiKey = "c1d20ef03fedeaf4c6fca40d08bodtba";
+  //  let ipIrl = `https://api.openweathermap.org/data/2.5/weather?q=${fixCity}&appid=${apiKey}&units=metric`;
+  let ipIrl = `https://api.shecodes.io/weather/v1/current?query=${fixCity}&key=${apiKey}&units=metric`;
+
+  axios.get(ipIrl).then(showTemperature);
 }
 
 let yourCity = document.querySelector("#research-form");
@@ -84,29 +86,30 @@ function displayForecast(response) {
   let forecastHTML = "";
   // let Fdays = ["Sunday", "Monday", "Tuesday", "Wednesday","Thursday","Friday"];
   Fdays.forEach(function (Fday, index) {
-    if (index < 6 && index > 0) {
+    if (index < 5 && index > 0) {
       forecastHTML =
         forecastHTML +
         `<div class="container forecastBody" >
         <div class="row text-center">
         <div class="col-3">
-                
-                  ${ForamtDay(Fday.dt)} <br />
-                   ${Foramtmonth(Fday.dt)}             
+                        <div class="data_day">
+                  ${ForamtDay(Fday.time)} <br />
+                   ${Foramtmonth(Fday.time)}             
                 </div>
-                <div class="col-6">
+                </div>
+                <div class="col-5">
                   <span class="emoji">
-                   ${Math.round(Fday.temp.min)}&deg/${Math.round(
-          Fday.temp.max
+                   ${Math.round(Fday.temperature.minimum)}&deg/${Math.round(
+          Fday.temperature.maximum
         )}&deg
                     </span>
                     </div>
                
-                <div class="col-3">
+                <div class="col-4 ">
                                  
-                   <img src="http://openweathermap.org/img/wn/${
-                     Fday.weather[0].icon
-                   }@2x.png"width="60px"alt=""class="forecast_icon"id="forecast_icon"/>  
+                   <img src="${
+                     Fday.condition.icon_url
+                   }"width="80px"alt=""class="forecast_icon"id="forecast_icon"/>  
                    </div>
 
                  
@@ -121,9 +124,9 @@ function displayForecast(response) {
 }
 
 function getForecast(coordinate) {
-  let apiKey = "e947cb2640f1db92e6a19005bc43b435";
-  let ipIrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinate.lat}&lon=${coordinate.lon}&appid=${apiKey}&units=metric`;
-
+  let apiKey = "c1d20ef03fedeaf4c6fca40d08bodtba";
+  let ipIrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinate.longitude}&lat=${coordinate.latitude}&key=${apiKey}&units=metric`;
+  //let ipIrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinate.lat}&lon=${coordinate.lon}&appid=${apiKey}&units=metric`;
   axios.get(ipIrl).then(displayForecast);
 }
 
@@ -131,22 +134,21 @@ function getForecast(coordinate) {
 
 function showTemperature(response) {
   document.querySelector(".city_temp").innerHTML = Math.round(
-    response.data.main.temp
+    response.data.temperature.current
   );
-  let celsiusTemper = response.data.main.temp;
 
   document.querySelector(".weather_description").innerHTML =
-    response.data.weather[0].main;
-  document.querySelector(".min_temperature").innerHTML = `${Math.round(
-    response.data.main.temp_min
-  )}°`;
-  document.querySelector(".max_temperature").innerHTML = `${Math.round(
-    response.data.main.temp_max
-  )}°`;
-  document.querySelector("h2").innerHTML = response.data.name;
+    response.data.condition.description;
+  // document.querySelector(".min_temperature").innerHTML = `${Math.round(response.data.main.temp_min)}°`;
+  //document.querySelector(".max_temperature").innerHTML = `${Math.round(response.data.main.temp_max)}°`;
+  document.querySelector("h2").innerHTML = response.data.city;
   document.querySelector(".humidity").innerHTML = Math.round(
-    response.data.main.humidity
+    response.data.temperature.humidity
   );
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute("src", response.data.condition.icon_url);
+  iconElement.setAttribute("alt", response.data.condition.description);
+  let celsiusTemper = response.data.temperature.current;
   //change digree
   function temperatureCelsius(event) {
     event.preventDefault();
@@ -168,20 +170,16 @@ function showTemperature(response) {
   let fahren = document.querySelector("#fahrenheit");
   fahren.addEventListener("click", temperatureFahrenheit);
   // console.log(          `http://openweathermap.org/img/wn/${respose.data.weather[0].icon}@2x.png`        );
-  document
-    .querySelector("#icon")
-    .setAttribute(
-      "src",
-      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-    );
-  console.log(response.data.coord);
-  getForecast(response.data.coord);
+
+  getForecast(response.data.coordinates);
 }
 
 function showPosition(position) {
-  let apiKey = "c8a77112b2faf6684bb4b21a0aa778ae";
-  let ipIrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric`;
-  axios.get(`${ipIrl}&appid=${apiKey}`).then(showTemperature);
+  let apiKey = "c1d20ef03fedeaf4c6fca40d08bodtba";
+  //  let ipIrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric`;
+  let ipIrl = `https://api.shecodes.io/weather/v1/current?lon=${position.coords.longitude}&lat=${position.coords.latitude}&units=metric`;
+  console.log(ipIrl);
+  axios.get(`${ipIrl}&key=${apiKey}`).then(showTemperature);
 }
 function getCurrentLocation(event) {
   event.preventDefault();
