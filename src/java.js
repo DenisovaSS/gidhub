@@ -82,6 +82,12 @@ function Foramtmonth(stamp) {
 }
 function displayForecast(response) {
   let Fdays = response.data.daily;
+  document.querySelector(".min_temperature").innerHTML = `${Math.round(
+    Fdays[0].temperature.minimum
+  )}°`;
+  document.querySelector(".max_temperature").innerHTML = `${Math.round(
+    Fdays[0].temperature.maximum
+  )}°`;
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = "";
   // let Fdays = ["Sunday", "Monday", "Tuesday", "Wednesday","Thursday","Friday"];
@@ -139,8 +145,7 @@ function showTemperature(response) {
 
   document.querySelector(".weather_description").innerHTML =
     response.data.condition.description;
-  // document.querySelector(".min_temperature").innerHTML = `${Math.round(response.data.main.temp_min)}°`;
-  //document.querySelector(".max_temperature").innerHTML = `${Math.round(response.data.main.temp_max)}°`;
+
   document.querySelector("h2").innerHTML = response.data.city;
   document.querySelector(".humidity").innerHTML = Math.round(
     response.data.temperature.humidity
