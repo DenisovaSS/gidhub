@@ -77,8 +77,9 @@ function Foramtmonth(stamp) {
   let date = new Date(stamp * 1000);
   let Fdate = date.getDate();
   let Fmonth = date.getMonth();
+  let FmonthAll = [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12];
 
-  return Fdate + "/" + Fmonth;
+  return Fdate + "/" + FmonthAll[Fmonth];
 }
 function displayForecast(response) {
   let Fdays = response.data.daily;
